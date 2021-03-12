@@ -4,20 +4,16 @@ files = Dir.glob(__dir__ + "/data/*.txt")
 
 user_rate = 0
 user_points = 0
-question_arr = []
 
 puts "Мини - викторина. Ответьте на вопросы."
 
-# При чтении содержимого файла передавайте все прочитанные значения в конструктор:
-# Складывайте экземпляра класса Question в массив.
-files.map do |question_file|
+question_arr = files.map do |question_file|
   question_lines = File.readlines(question_file, chomp: true, encoding: 'UTF-8')
-  question_arr << Question.new(question_lines[0],
-                               question_lines[1],
-                               question_lines[2])
+  Question.new(question_lines[0],
+               question_lines[1],
+               question_lines[2])
 end
 
-# А потом получайте нужную информацию из экземпляра вопросам соотв. методом: puts question.text
 quiz_game = question_arr.shuffle
 
 quiz_game.each do |question|
