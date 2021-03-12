@@ -6,4 +6,11 @@ class Question
     @answer = answer
     @points = points.to_i
   end
+
+  def to_s
+    <<~QUESTION
+    #{@text}
+    #{@points} баллов
+    QUESTION
+  end
 end
